@@ -1,0 +1,15 @@
+{
+    "id": "1",
+    "title": "Sample Look",
+    "query": {
+      "view": "sample_explore1",
+      "fields": [
+        "view1.id",
+        "view1.name"
+      ],
+      "filters": {
+        "view1.id": "1"
+      }
+    },
+    "folder_id": "1"
+}

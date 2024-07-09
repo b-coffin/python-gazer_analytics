@@ -1,0 +1,22 @@
+{
+  "target_dir": "sample",
+  "mode": "replace",
+  "target_explores": [
+    {
+      "before": "sample_explore1",
+      "after": "sample_explore01"
+    }
+  ],
+  "target_views": [
+    {
+      "before": "view1",
+      "after": "view01"
+    }
+  ],
+  "target_fields": [
+    {
+      "before": "view1.name",
+      "after": "view01.title"
+    }
+  ]
+}

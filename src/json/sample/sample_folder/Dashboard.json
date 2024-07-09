@@ -1,0 +1,38 @@
+{
+    "title": "Sample Dashboard",
+    "dashboard_elements": [
+      {
+        "query": {
+          "view": "sample_explore1",
+          "fields": [
+            "view1.id",
+            "view1.name"
+          ],
+          "url": "/explore/sample_model/sample_explore1"
+        },
+        "title": "Tile1"
+      },
+      {
+        "query": {
+          "view": "sample_explore2",
+          "fields": [
+            "view2.id",
+            "view2.name"
+          ],
+          "url": "/explore/sample_model/sample_explore2?fields=view2.id"
+        },
+        "title": "Tile2"
+      }
+    ],
+    "dashboard_filters": [
+      {
+        "name": "filter1",
+        "title": "フィルター1",
+        "explore": "sample_explore1",
+        "dimension": "id",
+        "default_value": "1"
+      }
+    ],
+    "folder_id": "1",
+    "id": "1"
+}

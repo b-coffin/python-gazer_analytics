@@ -1,0 +1,3 @@
+machine (ホスト名)
+  login (Client ID)
+  password (Client Secret)

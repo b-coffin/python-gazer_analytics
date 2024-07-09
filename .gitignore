@@ -1,0 +1,15 @@
+.env
+.ruby-version
+
+/**/__pycache__
+
+/src/config/*
+!/src/config/sample_get.json
+!/src/config/sample_replace.json
+
+/src/json/*
+!/src/json/sample
+
+/src/result/*
+
+/gazer_result/*
