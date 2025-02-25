@@ -31,9 +31,9 @@ main:
 
 gazer-install:
 	brew install rbenv \
-	&& rbenv install 2.7.6 \
-	&& rbenv local 2.7.6 \
-	&& gem install gazer -v 0.3.9
+	&& rbenv install 3.1.6 \
+	&& rbenv local 3.1.6 \
+	&& gem install gazer
 
 # ~/.netrc設定
 # 下記でファイルを作成し、クレデンシャル情報を入力
