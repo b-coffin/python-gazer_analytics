@@ -34,5 +34,5 @@ class Dashboard:
 
 
     def get_url(self, config: Config):
-        return f"https://{config.host}/dashboards/{self.id}"
+        return f"https://{config.host}/{jmespath.search('url', self.json)}"
     
