@@ -24,6 +24,7 @@ def gazer_get(input_filenames: list[str], config: Config, input_dir: str, result
                         "title": db.title,
                         "URL": db.url,
                         "folder": os.path.dirname(os.path.relpath(file, input_dir)),
+                        "tile_id": tile.id,
                         "tile": tile.title,
                         "explore": tile.explore
                     })
@@ -35,10 +36,14 @@ def gazer_get(input_filenames: list[str], config: Config, input_dir: str, result
                     "title": look.title,
                     "URL": look.url,
                     "folder": os.path.dirname(os.path.relpath(file, input_dir)),
+                    "tile_id": None,
                     "tile": None,
                     "explore": look.explore
                 })
 
+    # dbsを、idとtile_idで並べ替える
+    dbs = sorted(dbs, key=lambda x: (x["id"], x["tile_id"]))
+    
     util.write_dicts_to_csv(os.path.join(result_dir, "Dashboards.csv"), dbs)
 
     return

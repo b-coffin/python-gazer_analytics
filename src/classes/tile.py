@@ -10,10 +10,15 @@ class Tile:
 
     def __init__(self, tile_json, config: Config):
         self.json = tile_json
+        self.id: str = self.get_id()
         self.title: str = self.get_title()
         self.explore: str = self.get_explorename()
         self.explore_url: str = self.get_exploreurl(config)
 
+
+    def get_id(self) -> str:
+        return jmespath.search('id', self.json)
+    
 
     def get_explorename(self):
         return jmespath.search("query.view", self.json)
