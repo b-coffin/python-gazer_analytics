@@ -1,6 +1,7 @@
 import jmespath
 
 from classes.config import Config
+from classes.filter import Filter
 from classes.tile import Tile
 
 from typing import Dict, List
@@ -15,7 +16,7 @@ class Dashboard:
         self.title = jmespath.search("title", self.json)
         self.url = self.get_url(config)
         self.tiles: List[Tile] = self.get_tiles(config)
-        self.filters = self.json.get("dashboard_filters", [])
+        self.filters: List[Filter] = self.get_filters(config)
 
 
     def get_id(self):
@@ -35,4 +36,11 @@ class Dashboard:
 
     def get_url(self, config: Config):
         return f"https://{config.host}/{jmespath.search('url', self.json)}"
+    
+
+    def get_filters(self, config: Config) -> List[Filter]:
+        filters = []
+        for filter in self.json.get("dashboard_filters", []):
+            filters.append(Filter(filter, config))
+        return filters
     
