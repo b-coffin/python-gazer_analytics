@@ -14,6 +14,7 @@ class Tile:
         self.title: str = self.get_title()
         self.explore: str = self.get_explorename()
         self.explore_url: str = self.get_exploreurl(config)
+        self.fields: list[str] = self.get_fields()
 
 
     def get_id(self) -> str:
@@ -34,3 +35,7 @@ class Tile:
 
     def get_title(self):
         return jmespath.search("title", self.json)
+
+
+    def get_fields(self) -> list[str]:
+        return jmespath.search("query.fields", self.json)
