@@ -5,6 +5,7 @@ import re
 import util
 
 from classes.config import Config
+from classes.query_fields import QueryFields
 
 class Tile:
 
@@ -15,6 +16,9 @@ class Tile:
         self.explore: str = self.get_explorename()
         self.explore_url: str = self.get_exploreurl(config)
         self.fields: list[str] = self.get_fields()
+        self.measures: list[QueryFields] = self.get_query_fields(config, "measures")
+        self.dimensions: list[QueryFields] = self.get_query_fields(config, "dimensions")
+        self.table_calculations: list[QueryFields] = self.get_query_fields(config, "table_calculations")
 
 
     def get_id(self) -> str:
@@ -39,3 +43,12 @@ class Tile:
 
     def get_fields(self) -> list[str]:
         return jmespath.search("query.fields", self.json)
+    
+
+    def get_query_fields(self, config: Config, fields_type: str) -> list[QueryFields]:
+        result = []
+        query_fields = jmespath.search(f"query.vis_config.query_fields.{fields_type}", self.json)
+        if type(query_fields) == list:
+            for query_field in query_fields:
+                result.append(QueryFields(query_field, config))
+        return result
